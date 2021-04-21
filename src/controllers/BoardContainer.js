@@ -132,6 +132,7 @@ class BoardContainer extends Component {
       onLaneDelete,
       onLaneUpdate,
       editable,
+      editableCards,
       canAddLanes,
       laneStyle,
       onCardMoveAcrossLanes,
@@ -194,6 +195,7 @@ class BoardContainer extends Component {
                   labelStyle={lane.labelStyle || {}}
                   cardStyle={this.props.cardStyle || lane.cardStyle}
                   editable={editable && !lane.disallowAddingCard}
+                  editableCards={editableCards === undefined ? editable : editableCards}
                   {...otherProps}
                   {...passthroughProps}
                 />
@@ -266,6 +268,7 @@ BoardContainer.defaultProps = {
   onCardMoveAcrossLanes: () => {},
   onLaneUpdate: () => {},
   editable: false,
+  editableCards: undefined,
   canAddLanes: false,
   hideCardDeleteIcon: false,
   draggable: false,

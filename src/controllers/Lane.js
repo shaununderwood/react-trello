@@ -150,6 +150,7 @@ class Lane extends Component {
       cards,
       laneSortFunction,
       editable,
+      editableCards,
       hideCardDeleteIcon,
       cardDraggable,
       cardDragClass,
@@ -177,7 +178,7 @@ class Lane extends Component {
           showDeleteButton={!hideCardDeleteIcon}
           tagStyle={tagStyle}
           cardDraggable={cardDraggable}
-          editable={editable}
+          editable={editableCards}
           t={t}
           {...card}
         />
@@ -305,6 +306,7 @@ Lane.propTypes = {
   onLaneClick: PropTypes.func,
   onLaneScroll: PropTypes.func,
   editable: PropTypes.bool,
+  editableCards: PropTypes.bool,
   laneDraggable: PropTypes.bool,
   cardDraggable: PropTypes.bool,
   cardDragClass: PropTypes.string,
@@ -319,6 +321,7 @@ Lane.defaultProps = {
   labelStyle: {},
   label: undefined,
   editable: false,
+  editableCards: undefined,
   onLaneUpdate: () => {},
   onCardAdd: () => {},
   onCardUpdate: () => {}
