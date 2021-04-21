@@ -42,10 +42,17 @@ class Card extends Component {
       onChange({...card, id})
     }
 
+    const clickCard = (event)=>{
+      if (editable && event?.target?.type==='textarea'){
+        return;
+      }
+      onClick(event);
+    }
+
     return (
       <MovableCardWrapper
         data-id={id}
-        onClick={onClick}
+        onClick={clickCard}
         style={style}
         className={className}
       >
