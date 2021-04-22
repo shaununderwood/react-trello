@@ -67,7 +67,7 @@ class CardEditableNote extends Component {
   }
 }
 
-Card.propTypes = {
+CardEditableNote.propTypes = {
   onDelete: PropTypes.func,
   onClick: PropTypes.func,
   style: PropTypes.object,
@@ -78,7 +78,7 @@ Card.propTypes = {
   note: PropTypes.string,
 };
 
-Card.defaultProps = {
+CardEditableNote.defaultProps = {
   onDelete: () => {},
   onClick: () => {},
   style: {},
