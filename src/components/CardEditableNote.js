@@ -82,10 +82,10 @@ CardEditableNote.defaultProps = {
   onDelete: () => {},
   onClick: () => {},
   style: {},
+  className: '',
   title: 'no title',
   description: '',
   note: '',
-  className: ''
 };
 
 export default CardEditableNote;

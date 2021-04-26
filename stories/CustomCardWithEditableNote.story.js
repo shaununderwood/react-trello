@@ -334,5 +334,5 @@ storiesOf('Editable Board', module).add(
   () => {
     return <BoardWithCustomCard />
   },
-  {info: 'Card with editable noote field'}
+  {info: 'Card with editable note field'}
 )
