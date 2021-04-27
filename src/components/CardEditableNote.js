@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -8,7 +8,6 @@ import {
   Detail,
 } from 'rt/styles/Base';
 import TextInput from 'rt/widgets/TextInput';
-import DeleteButton from 'rt/widgets/DeleteButton';
 
 class CardEditableNote extends Component {
   onDelete = e => {
@@ -16,7 +15,7 @@ class CardEditableNote extends Component {
     e.stopPropagation();
   }
 
-  render()  {
+  render() {
     const {
       style,
       onClick,
@@ -30,11 +29,11 @@ class CardEditableNote extends Component {
     } = this.props;
 
     const updateCard = (card) => {
-      onChange({...card, id});
+      onChange({ ...card, id });
     }
 
-    const clickCard = (event)=>{
-      if (event?.target?.type==='textarea'){
+    const clickCard = (event) => {
+      if (event?.target?.type === 'textarea') {
         return;
       }
       onClick(event);
@@ -51,15 +50,17 @@ class CardEditableNote extends Component {
           <CardTitle draggable={cardDraggable}>
             {title}
           </CardTitle>
-          <DeleteButton onClick={this.onDelete} />
         </CardHeader>
         <Detail>
-          {description} 
-          <div style={{display:'flex'}}>
+          {description}
+          <div style={{ display: 'flex' }}>
             &#x02261;
-            <div style={{flexGrow: 1}}>
-              <TextInput value={note} border placeholder={"Notes"} resize='vertical' onSave={(value) => updateCard({note: value})} />
+            <div style={{ flexGrow: 1 }}>
+              <TextInput value={note} border placeholder={"Notes"} resize='vertical' onSave={(value) => updateCard({ note: value })} />
             </div>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <button>View</button>
           </div>
         </Detail>
       </MovableCardWrapper>
@@ -68,7 +69,7 @@ class CardEditableNote extends Component {
 }
 
 CardEditableNote.propTypes = {
-  onDelete: PropTypes.func,
+  onEdit: PropTypes.func,
   onClick: PropTypes.func,
   style: PropTypes.object,
   className: PropTypes.string,
@@ -76,16 +77,20 @@ CardEditableNote.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   note: PropTypes.string,
+  optionBtnText: PropTypes.string,
+  optionBtnOnClick: PropTypes.func,
 };
 
 CardEditableNote.defaultProps = {
-  onDelete: () => {},
-  onClick: () => {},
+  onEdit: () => { },
+  onClick: () => { },
   style: {},
   className: '',
   title: 'no title',
   description: '',
   note: '',
+  optionBtnText: null,
+  optionBtnOnClick: null,
 };
 
 export default CardEditableNote;

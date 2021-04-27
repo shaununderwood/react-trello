@@ -9,6 +9,14 @@ export const DeleteWrapper = styled.div`
   cursor: pointer;
 `
 
+export const EditWrapper = styled.div`
+  text-align: center;
+  position: absolute;
+  top: -1px;
+  right: 2px;
+  cursor: pointer;
+`
+
 export const GenDelButton = styled.button`
   transition: all 0.5s ease;
   display: inline-block;
@@ -37,6 +45,25 @@ export const DelButton = styled.button`
   background: inherit;
   cursor: pointer;
   opacity: 0;
+  ${EditWrapper}:hover & {
+    opacity: 1;
+  }
+`
+
+export const EditButton = styled.button`
+  transition: all 0.5s ease;
+  display: inline-block;
+  border: none;
+  font-size: 20px;
+  height: 15px;
+  line-height: 5px;
+  margin: 0 0 8px;
+  padding: 0;
+  text-align: center;
+  width: 15px;
+  background: inherit;
+  cursor: pointer;
+  opacity: 0.2;
   ${MovableCardWrapper}:hover & {
     opacity: 1;
   }
