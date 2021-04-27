@@ -19,8 +19,6 @@ var _Base = require("../styles/Base");
 
 var _TextInput = _interopRequireDefault(require("../widgets/TextInput"));
 
-var _DeleteButton = _interopRequireDefault(require("../widgets/DeleteButton"));
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -67,9 +65,7 @@ class CardEditableNote extends _react.Component {
       className: className
     }, /*#__PURE__*/_react.default.createElement(_Base.CardHeader, null, /*#__PURE__*/_react.default.createElement(_Base.CardTitle, {
       draggable: cardDraggable
-    }, title), /*#__PURE__*/_react.default.createElement(_DeleteButton.default, {
-      onClick: this.onDelete
-    })), /*#__PURE__*/_react.default.createElement(_Base.Detail, null, description, /*#__PURE__*/_react.default.createElement("div", {
+    }, title)), /*#__PURE__*/_react.default.createElement(_Base.Detail, null, description, /*#__PURE__*/_react.default.createElement("div", {
       style: {
         display: 'flex'
       }
@@ -85,29 +81,37 @@ class CardEditableNote extends _react.Component {
       onSave: value => updateCard({
         note: value
       })
-    })))));
+    }))), /*#__PURE__*/_react.default.createElement("div", {
+      style: {
+        textAlign: 'right'
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", null, "View"))));
   }
 
 }
 
 CardEditableNote.propTypes = {
-  onDelete: _propTypes.default.func,
+  onEdit: _propTypes.default.func,
   onClick: _propTypes.default.func,
   style: _propTypes.default.object,
   className: _propTypes.default.string,
   id: _propTypes.default.string.isRequired,
   title: _propTypes.default.string.isRequired,
   description: _propTypes.default.string,
-  note: _propTypes.default.string
+  note: _propTypes.default.string,
+  optionBtnText: _propTypes.default.string,
+  optionBtnOnClick: _propTypes.default.func
 };
 CardEditableNote.defaultProps = {
-  onDelete: () => {},
+  onEdit: () => {},
   onClick: () => {},
   style: {},
+  className: '',
   title: 'no title',
   description: '',
   note: '',
-  className: ''
+  optionBtnText: null,
+  optionBtnOnClick: null
 };
 var _default = CardEditableNote;
 exports.default = _default;
