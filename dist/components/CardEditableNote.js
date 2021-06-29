@@ -60,7 +60,6 @@ class CardEditableNote extends _react.Component {
 
     return /*#__PURE__*/_react.default.createElement(_Base.MovableCardWrapper, {
       "data-id": id,
-      onClick: clickCard,
       style: style,
       className: className
     }, /*#__PURE__*/_react.default.createElement(_Base.CardHeader, null, /*#__PURE__*/_react.default.createElement(_Base.CardTitle, {
@@ -85,7 +84,9 @@ class CardEditableNote extends _react.Component {
       style: {
         textAlign: 'right'
       }
-    }, /*#__PURE__*/_react.default.createElement("button", null, "View"))));
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      onClick: clickCard
+    }, "View"))));
   }
 
 }

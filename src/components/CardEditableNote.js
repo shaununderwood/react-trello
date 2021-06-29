@@ -42,7 +42,6 @@ class CardEditableNote extends Component {
     return (
       <MovableCardWrapper
         data-id={id}
-        onClick={clickCard}
         style={style}
         className={className}
       >
@@ -60,7 +59,7 @@ class CardEditableNote extends Component {
             </div>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <button>View</button>
+            <button onClick={clickCard}>View</button>
           </div>
         </Detail>
       </MovableCardWrapper>
