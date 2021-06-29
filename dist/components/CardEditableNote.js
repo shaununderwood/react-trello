@@ -65,7 +65,7 @@ class CardEditableNote extends _react.Component {
       className: className
     }, /*#__PURE__*/_react.default.createElement(_Base.CardHeader, null, /*#__PURE__*/_react.default.createElement(_Base.CardTitle, {
       draggable: cardDraggable
-    }, title)), /*#__PURE__*/_react.default.createElement(_Base.Detail, null, description, /*#__PURE__*/_react.default.createElement("div", {
+    }, description)), /*#__PURE__*/_react.default.createElement(_Base.Detail, null, description, /*#__PURE__*/_react.default.createElement("div", {
       style: {
         display: 'flex'
       }
