@@ -47,7 +47,7 @@ class CardEditableNote extends Component {
       >
         <CardHeader>
           <CardTitle draggable={cardDraggable}>
-            {description}
+            {title}
           </CardTitle>
         </CardHeader>
         <Detail>
