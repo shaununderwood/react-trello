@@ -42,10 +42,10 @@ class CardEditableNote extends Component {
       onClick(event);
     }
 
-    const displayAssignedTo = (assignedTo || assignedToList.length) &&
+    const displayAssignedTo = (assignedTo || Object.keys(assignedToList).length) &&
       <select onChange={({ target: { value } }) => updateCard({ assignedTo: value })} value={assignedTo} style={{ flexGrow: 2 }}>
         <option value>{" "}</option>
-        {assignedToList.map((item, key) => <option key={`assigned-to-${key}`} value={item.key}>{item.value}</option>)}
+        {Object.keys(assignedToList).map((item, key) => <option key={`assigned-to-${key}`} value={item}>{assignedToList[item]}</option>)}
       </select> || null;
 
     return (
@@ -104,7 +104,7 @@ CardEditableNote.defaultProps = {
   optionBtnText: null,
   optionBtnOnClick: null,
   assignedTo: "",
-  assignedToList: [],
+  assignedToList: {},
   onAssignedToChange: () => { },
 };
 

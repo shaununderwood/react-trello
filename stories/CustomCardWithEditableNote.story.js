@@ -44,7 +44,7 @@ const data = {lanes:[
                   "description": true
               },
               "laneId": "0",
-              "assignedToList": [{ key: 1, value: "shaun" }, { key: 2, value: "julia" }, { key: 3, value: "nika" },],
+              "assignedToList": {1:"shaun",2:"Julia"},
               "assignedTo": "3"
           },
           {
@@ -71,9 +71,11 @@ const data = {lanes:[
                   "land": "-",
                   "plot_size": "0.02",
                   "laneId": 0,
-                  "positionId": 1
+                  "positionId": 1,
               },
-              "positionId": 1,
+              "assignedToList": {1:"shaun",2:"Julia", 3: "nika"},
+              "assignedTo": "1",
+          "positionId": 1,
               "editable": {
                   "description": true
               },
