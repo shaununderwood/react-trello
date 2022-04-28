@@ -43,7 +43,9 @@ const data = {lanes:[
               "editable": {
                   "description": true
               },
-              "laneId": "0"
+              "laneId": "0",
+              "assignedToList": [{ key: 1, value: "shaun" }, { key: 2, value: "julia" }, { key: 3, value: "nika" },],
+              "assignedTo": "3"
           },
           {
               "id": "NGL735738",

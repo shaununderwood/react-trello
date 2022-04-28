@@ -25,7 +25,10 @@ class CardEditableNote extends Component {
       title,
       description,
       cardDraggable,
-      note
+      note,
+      assignedTo,
+      assignedToList,
+      onAssignedToChange = console.log,
     } = this.props;
 
     const updateCard = (card) => {
@@ -38,6 +41,12 @@ class CardEditableNote extends Component {
       }
       onClick(event);
     }
+
+    const displayAssignedTo = (assignedTo || assignedToList.length) &&
+      <select onChange={({ target: { value } }) => updateCard({ assignedTo: value })} value={assignedTo} style={{ flexGrow: 2 }}>
+        <option value>{" "}</option>
+        {assignedToList.map((item, key) => <option key={`assigned-to-${key}`} value={item.key}>{item.value}</option>)}
+      </select> || null;
 
     return (
       <MovableCardWrapper
@@ -58,7 +67,8 @@ class CardEditableNote extends Component {
               <TextInput value={note} border placeholder={"Notes"} resize='vertical' onSave={(value) => updateCard({ note: value })} />
             </div>
           </div>
-          <div style={{ textAlign: 'right' }}>
+          <div style={{ display: "flex", justifyContent: displayAssignedTo ? "space-between" : "right" }}>
+            {displayAssignedTo}
             <button onClick={clickCard}>View</button>
           </div>
         </Detail>
@@ -78,6 +88,9 @@ CardEditableNote.propTypes = {
   note: PropTypes.string,
   optionBtnText: PropTypes.string,
   optionBtnOnClick: PropTypes.func,
+  assignedTo: PropTypes.string,
+  assignedToList: PropTypes.arrayOf(PropTypes.object),
+  onAssignedToChange: PropTypes.func
 };
 
 CardEditableNote.defaultProps = {
@@ -90,6 +103,9 @@ CardEditableNote.defaultProps = {
   note: '',
   optionBtnText: null,
   optionBtnOnClick: null,
+  assignedTo: "",
+  assignedToList: [],
+  onAssignedToChange: () => { },
 };
 
 export default CardEditableNote;
