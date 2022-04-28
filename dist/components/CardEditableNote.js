@@ -42,7 +42,11 @@ class CardEditableNote extends _react.Component {
           title = _this$props.title,
           description = _this$props.description,
           cardDraggable = _this$props.cardDraggable,
-          note = _this$props.note;
+          note = _this$props.note,
+          assignedTo = _this$props.assignedTo,
+          assignedToList = _this$props.assignedToList,
+          _this$props$onAssigne = _this$props.onAssignedToChange,
+          onAssignedToChange = _this$props$onAssigne === void 0 ? console.log : _this$props$onAssigne;
 
     const updateCard = card => {
       onChange(_objectSpread(_objectSpread({}, card), {}, {
@@ -58,6 +62,24 @@ class CardEditableNote extends _react.Component {
       onClick(event);
     };
 
+    const displayAssignedTo = (assignedTo || Object.keys(assignedToList).length) && /*#__PURE__*/_react.default.createElement("select", {
+      onChange: ({
+        target: {
+          value
+        }
+      }) => updateCard({
+        assignedTo: value
+      }),
+      value: assignedTo,
+      style: {
+        flexGrow: 2
+      }
+    }, /*#__PURE__*/_react.default.createElement("option", {
+      value: true
+    }, " "), Object.keys(assignedToList).map((item, key) => /*#__PURE__*/_react.default.createElement("option", {
+      key: "assigned-to-".concat(key),
+      value: item
+    }, assignedToList[item]))) || null;
     return /*#__PURE__*/_react.default.createElement(_Base.MovableCardWrapper, {
       "data-id": id,
       style: style,
@@ -82,9 +104,10 @@ class CardEditableNote extends _react.Component {
       })
     }))), /*#__PURE__*/_react.default.createElement("div", {
       style: {
-        textAlign: 'right'
+        display: "flex",
+        justifyContent: displayAssignedTo ? "space-between" : "right"
       }
-    }, /*#__PURE__*/_react.default.createElement("button", {
+    }, displayAssignedTo, /*#__PURE__*/_react.default.createElement("button", {
       onClick: clickCard
     }, "View"))));
   }
@@ -101,7 +124,10 @@ CardEditableNote.propTypes = {
   description: _propTypes.default.string,
   note: _propTypes.default.string,
   optionBtnText: _propTypes.default.string,
-  optionBtnOnClick: _propTypes.default.func
+  optionBtnOnClick: _propTypes.default.func,
+  assignedTo: _propTypes.default.string,
+  assignedToList: _propTypes.default.arrayOf(_propTypes.default.object),
+  onAssignedToChange: _propTypes.default.func
 };
 CardEditableNote.defaultProps = {
   onEdit: () => {},
@@ -112,7 +138,10 @@ CardEditableNote.defaultProps = {
   description: '',
   note: '',
   optionBtnText: null,
-  optionBtnOnClick: null
+  optionBtnOnClick: null,
+  assignedTo: "",
+  assignedToList: {},
+  onAssignedToChange: () => {}
 };
 var _default = CardEditableNote;
 exports.default = _default;
